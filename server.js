@@ -36,8 +36,15 @@ app.get('/api/led-on-off', (req, res) => {
 app.post('/api/led-status', (req, res) => {
     const {status} = req.body;
 
-    
-})
+    ledStatus = status;
+    res.status(200).json({ message: `LED status is : ${ledStatus}` });
+});
+
+app.get('/api/led-status', (req, res) => {
+    console.log(`Get LED status: ${ledStatus}`);
+
+    res.json({ ledStatus });
+});
 
 app.listen(port, () => {
     console.log(`Server in running on port: ${port}`);
